@@ -1,0 +1,24 @@
+import {View, Text, StyleSheet} from 'react-native';
+
+export default function TelaAdicionar() {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.titulo}>Adicionar Filme</Text>
+            <Text>CRIAR FORMULARIO AQUI</Text> 
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems:'center',
+        justifyContent: 'center',
+        padding: 20,
+    },
+    titulo: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 12,
+    },
+});
