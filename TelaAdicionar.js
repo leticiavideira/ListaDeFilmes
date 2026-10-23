@@ -1,10 +1,21 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+import { useState } from 'react';
 
 export default function TelaAdicionar() {
+     const [titulo, setTitulo] = useState('');
+
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>Adicionar Filme</Text>
-            <Text>CRIAR FORMULARIO AQUI</Text> 
+
+            <TextInput
+                style={styles.input}
+                placeholder='Digite o título do filme'
+                value={titulo}
+                onChangeText={setTitulo}
+            />
+
+            <Text>Título digitado: {titulo}</Text> 
         </View>
     );
 }
@@ -21,4 +32,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 12,
     },
+    input: {
+        borderWidth: 1,
+        borderColor: '#999',
+        borderRadius: 6,
+        padding: 10,
+        marginBottom: 15,
+  },
 });
