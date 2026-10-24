@@ -11,22 +11,23 @@ export default function TelaFilmes({ filmes, navigation }) {
     <View style={styles.container}>
       <Text style={styles.titulo}>Meus filmes</Text>
 
-      {filmes.map((filme) => (
-        <TouchableOpacity
-          key={filme.id}
-          style={styles.filme}
-          onPress={() =>
-            navigation.navigate('Detalhes', { filme })
-          }
-        >
-          <Text style={styles.textoFilme}>
-            {filme.titulo} ({filme.ano})
-          </Text>
-        </TouchableOpacity>
-      ))}
-
-      {filmes.length === 0 && (
+      {filmes.length === 0 ? (
         <Text>Nenhum filme cadastrado.</Text>
+      ) : (
+        filmes.map((filme) => (
+          <TouchableOpacity
+            key={filme.id}
+            style={styles.filme}
+            onPress={() =>
+              navigation.navigate('Detalhes', { filme })
+            }
+          >
+            <Text style={styles.textoFilme}>
+              {filme.assistido ? '✓ ' : ''}
+              {filme.titulo} ({filme.ano})
+            </Text>
+          </TouchableOpacity>
+        ))
       )}
     </View>
   );
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: 'center',
   },
   titulo: {
     fontSize: 24,
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   filme: {
-    padding: 12,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 6,
+    padding: 15,
     marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#999',
+    borderRadius: 6,
   },
   textoFilme: {
-    fontSize: 18,
+    fontSize: 16,
   },
 });

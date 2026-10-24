@@ -5,7 +5,10 @@ import TelaDetalhes from '../TelaDetalhes';
 
 const Stack = createStackNavigator();
 
-export default function NavegacaoFilmes({ filmes }) {
+export default function NavegacaoFilmes({
+  filmes,
+  onAlternarAssistido,
+}) {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -26,9 +29,18 @@ export default function NavegacaoFilmes({ filmes }) {
           title: route.params.filme.titulo,
         })}
       >
-        {({ route }) => (
-          <TelaDetalhes filme={route.params.filme} />
-        )}
+        {({ route }) => {
+          const filmeAtual = filmes.find(
+            (item) => item.id === route.params.filme.id
+          );
+
+          return (
+            <TelaDetalhes
+              filme={filmeAtual}
+              onAlternarAssistido={onAlternarAssistido}
+            />
+          );
+        }}
       </Stack.Screen>
     </Stack.Navigator>
   );

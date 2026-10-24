@@ -9,6 +9,7 @@ const Tab = createBottomTabNavigator();
 export default function NavegacaoPrincipal({
   filmes,
   onAdicionarFilme,
+  onAlternarAssistido,
 }) {
   return (
     <Tab.Navigator>
@@ -23,12 +24,19 @@ export default function NavegacaoPrincipal({
         )}
       </Tab.Screen>
 
+      
       <Tab.Screen
         name="Filmes"
         options={{ title: 'Filmes', headerShown: false }}
       >
-        {() => <NavegacaoFilmes filmes={filmes} />}
+        {() => (
+          <NavegacaoFilmes
+            filmes={filmes}
+            onAlternarAssistido={onAlternarAssistido}
+          />
+        )}
       </Tab.Screen>
+
     </Tab.Navigator>
   );
 }
