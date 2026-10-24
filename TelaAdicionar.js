@@ -4,6 +4,7 @@ import { useState } from 'react';
 export default function TelaAdicionar() {
      const [titulo, setTitulo] = useState('');
      const [ano, setAno] = useState('');
+     const filme = {titulo: titulo, ano: ano};
 
     return (
         <View style={styles.container}>
