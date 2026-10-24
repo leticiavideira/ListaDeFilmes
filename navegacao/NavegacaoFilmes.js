@@ -1,15 +1,36 @@
+
 import { createStackNavigator } from '@react-navigation/stack';
 import TelaFilmes from '../TelaFilmes';
 import TelaDetalhes from '../TelaDetalhes';
 
 const Stack = createStackNavigator();
 
-export default function NavegacaoFilmes({filmes, onAlternarAssistido, onExcluirFilme}) {
+export default function NavegacaoFilmes({
+    filmes,
+    onAlternarAssistido,
+    onExcluirFilme,
+}) {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#CA4C63',
+                },
+                headerTintColor: '#FFFFFF',
+                headerTitleStyle: {
+                    fontFamily: 'Ribeye',
+                    fontSize: 18,
+                },
+                cardStyle: {
+                    backgroundColor: 'transparent',
+                },
+            }}
+        >
             <Stack.Screen
                 name="ListaFilmes"
-                options={{ title: 'Meus filmes' }}
+                options={{
+                    title: 'Meus filmes',
+                }}
             >
                 {({ navigation }) => (
                     <TelaFilmes
@@ -21,10 +42,14 @@ export default function NavegacaoFilmes({filmes, onAlternarAssistido, onExcluirF
 
             <Stack.Screen
                 name="Detalhes"
-                options={({ route }) => ({title: route.params.filme.titulo,})}
+                options={({ route }) => ({
+                    title: route.params.filme.titulo,
+                })}
             >
                 {({ route, navigation }) => {
-                    const filmeAtual = filmes.find((item) => item.id === route.params.filme.id);
+                    const filmeAtual = filmes.find(
+                        (item) => item.id === route.params.filme.id
+                    );
 
                     return (
                         <TelaDetalhes
