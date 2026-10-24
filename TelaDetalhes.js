@@ -1,19 +1,6 @@
+import {View, Text, StyleSheet, Pressable, Alert, ImageBackground} from 'react-native';
 
-import {
-    View,
-    Text,
-    StyleSheet,
-    Pressable,
-    Alert,
-    ImageBackground,
-} from 'react-native';
-
-export default function TelaDetalhes({
-    filme,
-    onAlternarAssistido,
-    onExcluirFilme,
-    navigation,
-}) {
+export default function TelaDetalhes({filme, onAlternarAssistido, onExcluirFilme, navigation}) {
     function confirmarExclusao() {
         Alert.alert(
             'Excluir filme',
@@ -69,7 +56,7 @@ export default function TelaDetalhes({
                     >
                         {filme.assistido
                             ? '✓ Assistido'
-                            : '♡ Não assistido'}
+                            : 'X Não assistido'}
                     </Text>
 
                     <Pressable

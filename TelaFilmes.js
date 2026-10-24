@@ -1,11 +1,4 @@
-
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    ImageBackground,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
 
 export default function TelaFilmes({ filmes, navigation }) {
     return (

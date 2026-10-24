@@ -1,15 +1,5 @@
-
 import { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    Button,
-    Alert,
-    StyleSheet,
-    ImageBackground,
-    Pressable,
-} from 'react-native';
+import {View, Text, TextInput, Button, Alert, StyleSheet, ImageBackground, Pressable} from 'react-native';
 
 export default function TelaAdicionar({ onAdicionarFilme }) {
     const [titulo, setTitulo] = useState('');

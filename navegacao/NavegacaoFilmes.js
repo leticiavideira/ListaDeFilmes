@@ -1,4 +1,3 @@
-
 import { createStackNavigator } from '@react-navigation/stack';
 import TelaFilmes from '../TelaFilmes';
 import TelaDetalhes from '../TelaDetalhes';

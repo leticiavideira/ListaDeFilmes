@@ -5,12 +5,7 @@ import NavegacaoFilmes from './NavegacaoFilmes';
 
 const Tab = createBottomTabNavigator();
 
-export default function NavegacaoPrincipal({
-    filmes,
-    onAdicionarFilme,
-    onAlternarAssistido,
-    onExcluirFilme,
-}) {
+export default function NavegacaoPrincipal({filmes, onAdicionarFilme, onAlternarAssistido, onExcluirFilme}) {
     return (
         <Tab.Navigator
             screenOptions={{
