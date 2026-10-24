@@ -4,12 +4,36 @@ import {
   Text,
   Button,
   StyleSheet,
+  Alert
 } from 'react-native';
 
 export default function TelaDetalhes({
   filme,
   onAlternarAssistido,
+  onExcluirFilme,
+  navigation,
 }) {
+
+  function confirmarExclusao() {
+    Alert.alert(
+      'Excluir filme',
+      `Tem certeza que deseja excluir "${filme.titulo}"?`,
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+        {
+          text: 'Excluir',
+          style: 'destructive',
+          onPress: () => {
+            onExcluirFilme(filme.id);
+            navigation.goBack();
+          },
+        },
+      ]
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>{filme.titulo}</Text>
@@ -28,6 +52,14 @@ export default function TelaDetalhes({
         }
         onPress={() => onAlternarAssistido(filme.id)}
       />
+
+      <View style={styles.botaoExcluir}>
+        <Button
+          title="Excluir filme"
+          color="#b00020"
+          onPress={confirmarExclusao}
+        />
+      </View>
     </View>
   );
 }
@@ -48,4 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 20,
   },
+  botaoExcluir: {
+  marginTop: 20,
+},
 });

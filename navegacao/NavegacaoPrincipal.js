@@ -10,6 +10,7 @@ export default function NavegacaoPrincipal({
   filmes,
   onAdicionarFilme,
   onAlternarAssistido,
+  onExcluirFilme,
 }) {
   return (
     <Tab.Navigator>
@@ -33,6 +34,7 @@ export default function NavegacaoPrincipal({
           <NavegacaoFilmes
             filmes={filmes}
             onAlternarAssistido={onAlternarAssistido}
+            onExcluirFilme={onExcluirFilme}
           />
         )}
       </Tab.Screen>

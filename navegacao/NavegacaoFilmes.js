@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 export default function NavegacaoFilmes({
   filmes,
   onAlternarAssistido,
+  onExcluirFilme,
 }) {
   return (
     <Stack.Navigator>
@@ -29,7 +30,7 @@ export default function NavegacaoFilmes({
           title: route.params.filme.titulo,
         })}
       >
-        {({ route }) => {
+        {({ route, navigation }) => {
           const filmeAtual = filmes.find(
             (item) => item.id === route.params.filme.id
           );
@@ -38,6 +39,8 @@ export default function NavegacaoFilmes({
             <TelaDetalhes
               filme={filmeAtual}
               onAlternarAssistido={onAlternarAssistido}
+              onExcluirFilme={onExcluirFilme}
+              navigation={navigation}
             />
           );
         }}

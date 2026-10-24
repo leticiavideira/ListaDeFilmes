@@ -10,6 +10,12 @@ export default function App() {
     setFilmes([...filmes, novoFilme]);
   }
 
+  
+  function excluirFilme(id) {
+    setFilmes(filmes.filter((filme) => filme.id !== id));
+  }
+
+
   function alternarAssistido(id) {
     setFilmes(
       filmes.map((filme) =>
@@ -26,6 +32,7 @@ export default function App() {
         filmes={filmes}
         onAdicionarFilme={adicionarFilme}
         onAlternarAssistido={alternarAssistido}
+        onExcluirFilme={excluirFilme}
       />
     </NavigationContainer>
   );
