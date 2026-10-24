@@ -4,20 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import NavegacaoPrincipal from './navegacao/NavegacaoPrincipal';
 
 export default function App() {
-  const [filmes, setFilmes] = useState([
-    {
-      id: 1,
-      titulo: 'Shrek',
-      ano: '2001',
-      assistido: false,
-    },
-    {
-      id: 2,
-      titulo: 'Toy Story',
-      ano: '1995',
-      assistido: false,
-    },
-  ]);
+  const [filmes, setFilmes] = useState([]);
 
   function adicionarFilme(novoFilme) {
     setFilmes([...filmes, novoFilme]);
