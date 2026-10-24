@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 export default function TelaAdicionar() {
      const [titulo, setTitulo] = useState('');
+     const [ano, setAno] = useState('');
 
     return (
         <View style={styles.container}>
@@ -15,7 +16,16 @@ export default function TelaAdicionar() {
                 onChangeText={setTitulo}
             />
 
+            <TextInput
+                style={styles.input}
+                placeholder="Digite o ano de lançamento"
+                value={ano}
+                onChangeText={setAno}
+                keyboardType="numeric"
+            />
+
             <Text>Título digitado: {titulo}</Text> 
+            <Text>Ano digitado: {ano}</Text>
         </View>
     );
 }
