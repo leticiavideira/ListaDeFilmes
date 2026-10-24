@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
-import TelaFilmes from './TelaFilmes';
-import TelaAdicionar from './TelaAdicionar';
+import { NavigationContainer } from '@react-navigation/native';
+import NavegacaoPrincipal from './navegacao/NavegacaoPrincipal';
 
 export default function App() {
   const [filmes, setFilmes] = useState([
@@ -8,12 +9,16 @@ export default function App() {
     { id: 2, titulo: 'Toy Story', ano: '1995' },
   ]);
 
-  
   function adicionarFilme(novoFilme) {
     setFilmes([...filmes, novoFilme]);
   }
 
   return (
-    <TelaAdicionar onAdicionarFilme={adicionarFilme} />
+    <NavigationContainer>
+      <NavegacaoPrincipal
+        filmes={filmes}
+        onAdicionarFilme={adicionarFilme}
+      />
+    </NavigationContainer>
   );
 }

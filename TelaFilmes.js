@@ -1,15 +1,28 @@
 
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
-export default function TelaFilmes({ filmes }) {
+export default function TelaFilmes({ filmes, navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Meus filmes</Text>
 
       {filmes.map((filme) => (
-        <Text key={filme.id} style={styles.filme}>
-          {filme.titulo} ({filme.ano})
-        </Text>
+        <TouchableOpacity
+          key={filme.id}
+          style={styles.filme}
+          onPress={() =>
+            navigation.navigate('Detalhes', { filme })
+          }
+        >
+          <Text style={styles.textoFilme}>
+            {filme.titulo} ({filme.ano})
+          </Text>
+        </TouchableOpacity>
       ))}
 
       {filmes.length === 0 && (
@@ -31,7 +44,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   filme: {
-    fontSize: 18,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 6,
     marginBottom: 10,
+  },
+  textoFilme: {
+    fontSize: 18,
   },
 });
