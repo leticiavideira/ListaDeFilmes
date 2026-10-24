@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import TelaFilmes from './TelaFilmes';
+import TelaAdicionar from './TelaAdicionar';
 
 export default function App() {
   const [filmes, setFilmes] = useState([
@@ -8,5 +8,12 @@ export default function App() {
     { id: 2, titulo: 'Toy Story', ano: '1995' },
   ]);
 
-  return <TelaFilmes filmes={filmes} />;
+  
+  function adicionarFilme(novoFilme) {
+    setFilmes([...filmes, novoFilme]);
+  }
+
+  return (
+    <TelaAdicionar onAdicionarFilme={adicionarFilme} />
+  );
 }

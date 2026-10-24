@@ -1,10 +1,28 @@
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, Button, Alert, StyleSheet} from 'react-native';
 import { useState } from 'react';
 
-export default function TelaAdicionar() {
-     const [titulo, setTitulo] = useState('');
-     const [ano, setAno] = useState('');
-     const filme = {titulo: titulo, ano: ano};
+export default function TelaAdicionar({onAdicionarFilme}) {
+    const [titulo, setTitulo] = useState('');
+    const [ano, setAno] = useState('');
+
+    function cadastrarFilme() {
+        if (titulo.trim() === '' || ano.trim() === '') {
+            Alert.alert('Atenção', 'Preencha o título e o ano.');
+            return;
+        }
+        const novoFilme = {
+            id: Date.now(),
+            titulo: titulo.trim(),
+            ano: ano.trim(),
+        };
+
+        onAdicionarFilme(novoFilme);
+
+        setTitulo('');
+        setAno('');
+
+        Alert.alert('Sucesso', 'Filme cadastrado!');
+    }
 
     return (
         <View style={styles.container}>
@@ -25,8 +43,10 @@ export default function TelaAdicionar() {
                 keyboardType="numeric"
             />
 
-            <Text>Título digitado: {titulo}</Text> 
-            <Text>Ano digitado: {ano}</Text>
+            <Button
+                title="Cadastrar filme"
+                onPress={cadastrarFilme}
+            />
         </View>
     );
 }
